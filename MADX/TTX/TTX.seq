@@ -1,0 +1,9 @@
+const edgeAngle = 0.506145483078356;
+
+Btot: sbend, l=0.4, angle = 2*pi/4, e1=edgeAngle, e2=edgeAngle;
+QF: quadrupole, l=0.1, k1=30;
+D1: drift, l=0.25;
+D2: drift, l=0.5;
+
+halfTTX:line=(D2,Btot,D2,QF,D2,Btot);
+TTX:line=(halfTTX,halfTTX);

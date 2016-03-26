@@ -1,0 +1,27 @@
+dx=0.0;
+
+beam, particle=electron, energy=49.9973887,npart=1;
+option,-echo;
+call file="TTX.seq";
+option,echo;
+
+use,period=TTX;
+savebeta, sequence=TTX;
+
+twiss,file;
+
+ptc_create_universe;
+ptc_create_layout,model=1,method=4,nst=10,exact;
+ptc_align;
+ptc_start, pt=0.0; !x=dx, y=dy;
+       
+ptc_track,icase=6, dump,
+       //element_by_element=1,   
+       turns=2048, ffile=1;
+
+
+ptc_track_end; 
+ptc_end;
+
+stop;
+

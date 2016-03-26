@@ -1,0 +1,27 @@
+dx=0.0;
+
+beam, particle=electron, energy=15.003103710149461,npart=1;
+option,-echo;
+call file="fodo.seq";
+option,echo;
+
+use,period=fodoring;
+savebeta, sequence=fodoring;
+
+twiss,file;
+
+ptc_create_universe;
+ptc_create_layout,model=1,method=2,nst=100,exact;
+ptc_align;
+ptc_start, pt=0.0; !x=dx, y=dy;
+       
+ptc_track,icase=6, dump,
+       //element_by_element=1,   
+       turns=2048, ffile=1;
+
+
+ptc_track_end; 
+ptc_end;
+
+stop;
+

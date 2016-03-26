@@ -1,0 +1,11 @@
+bd: sbend, l=0.4, angle = 2*pi/12/2;
+d0: drift, l=0.1;
+d1: drift, l=0.2;
+qf: quadrupole, l=0.1, k1=-5.0;
+qd: quadrupole, l=0.1, k1=5.0;
+//rf: rfcavity, l=1e-10, volt=-1000, freq=41.6378413889, lag=0.0, nst=1;
+rf: rfcavity, l=1e-10, volt=-1000, harmon=3, lag=0.0;
+
+fodo : line=(d0,bd,d1,qd,d1,bd,d1,qf,d0);
+!fodoring : line = (12*fodo,rf);
+fodoring : line = (12*fodo);
