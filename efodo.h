@@ -17,19 +17,19 @@ void efodo(LINE & FODO)
   for(int i=0;i<12;i++){
       temp.SetElem(DRIFT_,0.5*lDrift);
       FODO.Append(temp);
-      temp.SetElem(eBEND_,lBend, ang);temp.Nint=24;temp.FlagSpinTrack=1;
+      temp.SetElem(eBEND_,lBend, ang);temp.Nint=240;temp.FlagSpinTrack=1;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,lDrift);
       FODO.Append(temp);
-      temp.SetElem(eQUAD_,lQuad, quadK);temp.Nint=6;temp.FlagSpinTrack=1;
+      temp.SetElem(eQUAD_,lQuad, quadK);temp.Nint=60;temp.FlagSpinTrack=1;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,lDrift);
       FODO.Append(temp);
-      temp.SetElem(eBEND_,lBend, ang);temp.Nint=24;temp.FlagSpinTrack=1;
+      temp.SetElem(eBEND_,lBend, ang);temp.Nint=240;temp.FlagSpinTrack=1;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,lDrift);
       FODO.Append(temp);
-      temp.SetElem(eQUAD_,lQuad, -quadK);temp.Nint=6;temp.FlagSpinTrack=1;
+      temp.SetElem(eQUAD_,lQuad, -quadK);temp.Nint=60;temp.FlagSpinTrack=1;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,0.5*lDrift);
       FODO.Append(temp);
