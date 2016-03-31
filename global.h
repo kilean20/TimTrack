@@ -9,7 +9,7 @@
 //--------------------------spin-parameters--------------------------------
 const double MDM = 0.00115965218;  // anormalous magnetic momentum
 //const double EDM = 0.0;
-const double EDM = 7.3E-17;  // electric momentum g-factor
+const double EDM = 0.0;  // electric momentum g-factor
 //const double EDM = 14.6E-17;  // electric momentum g-factor
 //const double EDM = 7.3E-16;  // electric momentum g-factor
 
