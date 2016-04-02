@@ -38,8 +38,6 @@ int main(int argc, char *argv[])
     stringstream(argv[4]) >> nSkip;
 
     vector<double> x(10); std::fill(x.begin(), x.end(), 0.0);
-    stringstream(argv[2]) >>  x[dE_];
-    cout << "Design deltaE = " << x[dE_] << endl;
 
     cout << "LastElemType = " << FODO.Cell[FODO.Ncell-1].Type << endl;
     cout << "beforeWrf = " << FODO.Cell[FODO.Ncell-1].RFcav.Wrf << endl;
@@ -49,31 +47,35 @@ int main(int argc, char *argv[])
     const double cSpeed=299792458.0;
     cout << "RFLength = " << 6.0*M_PI*BETA*cSpeed/FODO.Cell[FODO.Ncell-1].RFcav.Wrf << endl;
 
-    //nlopt::algorithm algo;
-    //algo=nlopt::LN_COBYLA;
-    //algo=nlopt::LN_SBPLX;
-    //nlopt::opt opt(algo, 4);
-    //vector<double> lb(4); std::fill(lb.begin(), lb.end(), -0.01);
-    //vector<double> ub(4); std::fill(ub.begin(), ub.end(), 0.01);
-    //opt.set_lower_bounds(lb);
-    //opt.set_upper_bounds(ub);
-    //opt.set_min_objective(objFunc, &FODO);
-    //opt.set_xtol_rel(1e-8);
-    //opt.set_ftol_abs(1e-25);
+    nlopt::algorithm algo;
+    algo=nlopt::LN_COBYLA;
+    algo=nlopt::LN_SBPLX;
+    nlopt::opt opt(algo, 4);
+    vector<double> lb(4); std::fill(lb.begin(), lb.end(), -0.01);
+    vector<double> ub(4); std::fill(ub.begin(), ub.end(), 0.01);
+    opt.set_lower_bounds(lb);
+    opt.set_upper_bounds(ub);
+    opt.set_min_objective(objFunc, &FODO);
+    opt.set_xtol_rel(1e-8);
+    opt.set_ftol_abs(1e-25);
 
 
-    //double objResult=0;
-    //vector<double> obj_x;
-    //obj_x.push_back(0.0);obj_x.push_back(0.0);obj_x.push_back(x[dE_]);obj_x.push_back(x[vt_]);
-    //opt.optimize(obj_x, objResult);
+    double objResult=0;
+    vector<double> obj_x;
+    obj_x.push_back(0.0);obj_x.push_back(0.0);obj_x.push_back(x[dE_]);obj_x.push_back(x[vt_]);
+    opt.optimize(obj_x, objResult);
 
 
-
-    x[x_]=0.000213285851967322;x[px_]=5.18342623506211e-05;x[vt_]=-8.88057627435046e-10;
-    cout << "initials = " <<  x[dE_] << ",  vt = " << x[vt_] << ",  x = " << x[x_] << ",   px = " << x[px_] << endl;
+    cout << "closedOrbit deltaE = " << obj_x[2] << ",  vt = " << obj_x[3] << ",  x = " << obj_x[0] << ",   px = " << obj_x[1] << endl;
+    x[x_]=obj_x[0];x[px_]=obj_x[1];x[dE_]=obj_x[2];x[vt_]=obj_x[3];
 
     for(unsigned j=0;j!=FODO.Ncell;j++) FODO.Cell[j].Pass(x);
     cout << "after one turn deltaE = " << x[dE_] << ",  vt = " << x[vt_] << ",  x = " << x[x_] << ",   px = " << x[px_] << endl;
+
+    stringstream(argv[2]) >>  x[dE_];
+    x[x_]=obj_x[0];x[px_]=obj_x[1];x[dE_]+=obj_x[2];x[vt_]=obj_x[3];
+    cout << "Design deltaE = " << x[dE_] << endl;
+
 
     ofstream xData,zData,sData,spinData;
     stringstream ss;
