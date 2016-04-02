@@ -13,16 +13,16 @@
 using namespace std;
 
 
-//double objFunc(const vector<double> &x, std::vector<double> &grad, void* objFunc_data)
-//{
-//    vector<double> x0(10);  std::fill(x0.begin(), x0.end(), 0.0);
-//    x0[x_]=x[0];x0[px_]=x[1];x0[dE_]=x[2];x0[vt_]=x[3];
+double objFunc(const vector<double> &x, std::vector<double> &grad, void* objFunc_data)
+{
+    vector<double> x0(10);  std::fill(x0.begin(), x0.end(), 0.0);
+    x0[x_]=x[0];x0[px_]=x[1];x0[dE_]=x[2];x0[vt_]=x[3];
 
-//    LINE * FODO = (LINE *)objFunc_data;
-//    for(unsigned j=0;j!=FODO->Ncell;j++) FODO->Cell[j].Pass(x0);
+    LINE * FODO = (LINE *)objFunc_data;
+    for(unsigned j=0;j!=FODO->Ncell;j++) FODO->Cell[j].Pass(x0);
 
-//    return (x0[x_]-x[0])*(x0[x_]-x[0]) +(x0[px_]-x[1])*(x0[px_]-x[1]) +(x0[dE_]-x[2])*(x0[dE_]-x[2])+(x0[vt_]-x[3])*(x0[vt_]-x[3]);
-//}
+    return (x0[x_]-x[0])*(x0[x_]-x[0]) +(x0[px_]-x[1])*(x0[px_]-x[1]) +(x0[dE_]-x[2])*(x0[dE_]-x[2])+(x0[vt_]-x[3])*(x0[vt_]-x[3]);
+}
 
 
 int main(int argc, char *argv[])
