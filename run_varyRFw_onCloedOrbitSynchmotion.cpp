@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
-//#include <nlopt.hpp>
+#include <nlopt.hpp>
 #include "efodo.h"
 #include "line.h"
 #include "global.h"
