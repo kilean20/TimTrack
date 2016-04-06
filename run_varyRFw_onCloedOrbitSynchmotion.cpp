@@ -74,6 +74,7 @@ int main(int argc, char *argv[])
 
     stringstream(argv[2]) >>  x[dE_];
     x[x_]=obj_x[0];x[px_]=obj_x[1];x[dE_]+=obj_x[2];x[vt_]=obj_x[3];
+    //x[x_]=0;x[px_]=0;x[dE_]+=obj_x[2];x[vt_]=0;
     cout << "Design deltaE = " << x[dE_] << endl;
 
 
