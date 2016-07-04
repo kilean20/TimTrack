@@ -20,13 +20,13 @@ int main()
     //Define the ring
     LINE FODO;    efodo(FODO);    //FODO.Update();
 
-    unsigned nParticle=2, nTurn=1E5, nSkip=100;
+    unsigned nParticle=6, nTurn=1E5, nSkip=100;
     vector<double> x(10);
-    mat xData(nParticle*nTurn/nSkip,2);
-    mat sData(nParticle*nTurn/nSkip,2);
+    mat xData(nParticle*nTurn/nSkip,6);
+    mat sData(nParticle*nTurn/nSkip,6);
     for(unsigned n=0;n<nParticle;n++){
         std::fill(x.begin(), x.end(), 0.0);
-        x[dE_]=((double)n+1.0)*1.0e-4;
+        x[dE_]=((double)n+1.0)*1.0e-3;
         for(unsigned i=0;i<nTurn;i++){
             for(unsigned j=0;j<FODO.Ncell;j++) {FODO.Cell[j].Pass(x);}
             if (i%nSkip==0) {
