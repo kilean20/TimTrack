@@ -17,26 +17,26 @@ void efodo(LINE & FODO)
   for(int i=0;i<12;i++){
       temp.SetElem(DRIFT_,0.5*lDrift);
       FODO.Append(temp);
-      temp.SetElem(eBEND_,lBend, ang);temp.Nint=12;temp.FlagSpinTrack=1;
+      temp.SetElem(eBEND_,lBend, ang);temp.Nint=12;temp.FlagSpinTrack=0;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,lDrift);
       FODO.Append(temp);
-      temp.SetElem(eQUAD_,lQuad, quadK);temp.Nint=3;temp.FlagSpinTrack=1;
+      temp.SetElem(eQUAD_,lQuad, quadK);temp.Nint=3;temp.FlagSpinTrack=0;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,lDrift);
       FODO.Append(temp);
-      temp.SetElem(eBEND_,lBend, ang);temp.Nint=12;temp.FlagSpinTrack=1;
+      temp.SetElem(eBEND_,lBend, ang);temp.Nint=12;temp.FlagSpinTrack=0;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,lDrift);
       FODO.Append(temp);
-      temp.SetElem(eQUAD_,lQuad, -quadK);temp.Nint=3;temp.FlagSpinTrack=1;
+      temp.SetElem(eQUAD_,lQuad, -quadK);temp.Nint=3;temp.FlagSpinTrack=0;
       FODO.Append(temp);
       temp.SetElem(DRIFT_,0.5*lDrift);
       FODO.Append(temp);
   }
-  const double cSpeed=299792458.0;
-  const double revFreq = (BETA*cSpeed)/FODO.Length;
+  //const double cSpeed=299792458.0;
+  //const double revFreq = (BETA*cSpeed)/FODO.Length;
 
-  temp.SetElem(RFcav_,1000.0, 3.0*revFreq, 0.0);
+  //temp.SetElem(RFcav_,1000.0, 3.0*revFreq, 0.0);
   FODO.Append(temp);
 }
